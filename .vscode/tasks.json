@@ -1,0 +1,18 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"problemMatcher": [
+				"$ca65",
+				"$ld65"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"label": "ca65: Build without config",
+            "command": "ca65 --verbose main.s -o text.o -g; ld65 -C nes.cfg -o text.nes --dbgfile text.dbg text.o"
+		}
+	]
+}
