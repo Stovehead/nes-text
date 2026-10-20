@@ -43,7 +43,7 @@ MMC3_IRQ_ENABLE = $E001
 
 .segment "HEADER"  
     .byte $4E, $45, $53, $1A    ; iNES header identifier
-    .byte 3                     ; 3x 16KB PRG code
+    .byte 4                     ; 4x 16KB PRG code
     .byte 0                     ; No CHR ROM
     .byte $40, $08              ; MMC3, NES 2.0
     .byte $00                   ; No submapper
