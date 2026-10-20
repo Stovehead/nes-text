@@ -7,8 +7,8 @@ pixel_list = list(pixels)
 with open("kana.bin", "wb") as output:
     bytes_left = 8192
     for i in range(0, len(pixel_list[0]), 16 * 4):
-        for c in range(0, 2):
-            for r in range(0, 2):
+        for r in range(0, 2):
+            for c in range(0, 2):
                 for j in range(0, 8):
                     byte = 0
                     for k in range(0, 8):
