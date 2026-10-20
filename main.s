@@ -462,6 +462,12 @@ disable_rendering_irq:
     stx PPUSCROLL
     sta PPUADDR
     lda current_ppu_mask
+    and #%11101111
+    sta PPUMASK
+    .repeat 45
+    nop
+    .endrepeat
+    lda current_ppu_mask
     sta PPUMASK
     pla
     tay
