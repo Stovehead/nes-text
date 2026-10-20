@@ -402,7 +402,12 @@ nmi:
     update_irq nop_slide
     update_next_irq disable_rendering_irq
 
-    lda #$17
+    lda y_scroll
+    eor #$FF
+    bpl :+
+    clc
+    adc #$10
+    :
     sta MMC3_IRQ_LATCH
     sta MMC3_IRQ_RELOAD
     sta MMC3_IRQ_ENABLE
