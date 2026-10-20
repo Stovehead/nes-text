@@ -71,6 +71,7 @@ MMC3_IRQ_ENABLE = $E001
 .endmacro
 
 reset:
+    sta MMC3_IRQ_DISABLE
     sei        ; ignore IRQs
     cld        ; disable decimal mode
     ldx #$40
