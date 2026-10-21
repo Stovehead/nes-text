@@ -337,41 +337,41 @@ reset:
     jmp @draw_char_loop
     :
 
-    lda #$00
-    sta PPUADDR
-    sta PPUADDR
-    lda #%10001001
-    sta PPUDATA
-    asl
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    lda #%10001001
-    sta PPUDATA
-    asl
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
-    rol
-    sta PPUDATA
+    ; lda #$00
+    ; sta PPUADDR
+    ; sta PPUADDR
+    ; lda #%10001001
+    ; sta PPUDATA
+    ; asl
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; lda #%10001001
+    ; sta PPUDATA
+    ; asl
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
 
     lda #$08
     sta x_scroll
