@@ -210,7 +210,7 @@ reset:
     sty PPUADDR
     ldy #$02
     sty PPUADDR
-    ldx #14
+    ldx #15
     :
     sta PPUDATA
     adc #$01
@@ -224,7 +224,7 @@ reset:
     sty PPUADDR
     ldy #$22
     sty PPUADDR
-    ldx #14
+    ldx #15
     :
     sta PPUDATA
     adc #$01
@@ -266,7 +266,7 @@ reset:
     bcc :-
     lda #$00
     sta scratch + 3
-    lda Line + 14, x
+    lda Line + 15, x
     sta scratch + 2
     asl scratch + 2
     rol scratch + 3
@@ -332,47 +332,49 @@ reset:
     cpy #$20
     bcc :-
     inx
-    cpx #14
+    cpx #15
     bcs :+
     jmp @draw_char_loop
     :
 
-    ; lda #$00
-    ; sta PPUADDR
-    ; sta PPUADDR
-    ; lda #%10001001
-    ; sta PPUDATA
-    ; asl
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; lda #%10001001
-    ; sta PPUDATA
-    ; asl
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
-    ; rol
-    ; sta PPUDATA
+    lda #$00
+    sta PPUADDR
+    sta PPUADDR
+    lda #%10001001
+    sta PPUDATA
+    asl
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    lda #%10001001
+    sta PPUDATA
+    asl
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
+    rol
+    sta PPUDATA
 
+    lda #$08
+    sta x_scroll
     lda #$E8
     sta y_scroll
 
@@ -493,14 +495,12 @@ disable_rendering_irq:
     sta PPUADDR
     lda #$00
     sta PPUSCROLL
-    ldx #$00
-    and #$F8
-    asl
-    asl
+    ldx #$09
+    ora #$01
     tay
     lda current_ppu_mask
     and #%11101111
-    .repeat 38
+    .repeat 40
     nop
     .endrepeat
     stx PPUSCROLL
@@ -522,8 +522,8 @@ disable_rendering_irq:
 
 .segment "RODATA"
 Line:
-    .byte $00, $18, $17, $10, $34, $02, $10, $34, $02, $10, $34, $02, $FF, $FF
-    .byte $10, $34, $02, $0B, $0F, $01, $41, $08, $FF, $00, $14, $0F, $18, $FF
+    .byte $00, $01, $02, $03, $04, $05, $06, $07, $08, $09, $0A, $0B, $0C, $0D, $0E
+    .byte $51, $52, $53, $54, $55, $56, $57, $58, $59, $5A, $5B, $5C, $5D, $5E, $5F
 
 .segment "VECTORS"
     .addr nmi_jump
