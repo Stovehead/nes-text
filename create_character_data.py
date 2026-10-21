@@ -19,5 +19,3 @@ with open("kana.bin", "wb") as output:
                         byte = byte | (bit << (7 - k))
                     output.write(bytearray([byte]))
                     bytes_left -= 1
-    for _ in range(bytes_left):
-        output.write(bytearray([0]))
