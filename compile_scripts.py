@@ -42,4 +42,7 @@ for moji in output:
 
 print()
 
-print(seenkanji)
+banks = [open("kanjibank0.bin", "wb"), open("kanjibank1.bin", "wb"), open("kanjibank2.bin", "wb"), open("kanjibank3.bin", "wb")]
+
+for kanji, i in seenkanji.items():
+    banks[i // 256].write(png_to_binary(png.Reader(filename="kanji/" + kanji + ".png")))

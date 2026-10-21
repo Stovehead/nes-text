@@ -1,4 +1,4 @@
 .pushseg
-.segment "BANK1"
+.segment "BANK4"
 .incbin "kana.bin"
 .popseg

@@ -180,7 +180,7 @@ reset:
     sta MMC3_BANK_DATA
     lda #%00000111
     sta MMC3_BANK_SELECT
-    lda #$01
+    lda #$04
     sta MMC3_BANK_DATA
 
     bit PPUSTATUS
@@ -519,6 +519,7 @@ disable_rendering_irq:
     rti
 
 .include "kana.s"
+.include "kanji.s"
 
 .segment "RODATA"
 Line:
