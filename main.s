@@ -495,7 +495,7 @@ disable_rendering_irq:
     sta PPUADDR
     lda #$00
     sta PPUSCROLL
-    ldx #$09
+    ldx #$08
     ora #$01
     tay
     lda current_ppu_mask
