@@ -337,6 +337,42 @@ reset:
     jmp @draw_char_loop
     :
 
+    ; lda #$00
+    ; sta PPUADDR
+    ; sta PPUADDR
+    ; lda #%10001001
+    ; sta PPUDATA
+    ; asl
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; lda #%10001001
+    ; sta PPUDATA
+    ; asl
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+    ; rol
+    ; sta PPUDATA
+
     lda #$E8
     sta y_scroll
 
@@ -461,13 +497,14 @@ disable_rendering_irq:
     and #$F8
     asl
     asl
-    .repeat 40
+    tay
+    lda current_ppu_mask
+    and #%11101111
+    .repeat 38
     nop
     .endrepeat
     stx PPUSCROLL
-    sta PPUADDR
-    lda current_ppu_mask
-    and #%11101111
+    sty PPUADDR
     sta PPUMASK
     .repeat 45
     nop
@@ -485,8 +522,8 @@ disable_rendering_irq:
 
 .segment "RODATA"
 Line:
-    .byte $00, $01, $02, $03, $04, $05, $06, $07, $08, $09, $0A, $0B, $0C, $0D
-    .byte $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $1A, $1B, $1C, $1D
+    .byte $00, $18, $17, $10, $34, $02, $10, $34, $02, $10, $34, $02, $FF, $FF
+    .byte $10, $34, $02, $0B, $0F, $01, $41, $08, $FF, $00, $14, $0F, $18, $FF
 
 .segment "VECTORS"
     .addr nmi_jump
