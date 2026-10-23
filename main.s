@@ -483,7 +483,7 @@ disable_rendering_irq:
     lda #$01 ; 2 cycles
     ldx #$0F ; 2 cycles
     ldy #$20 ; 2 cycles
-    .repeat 29
+    .repeat 31
     nop
     .endrepeat
     sta PPUADDR
@@ -500,7 +500,7 @@ disable_rendering_irq:
     tay
     lda current_ppu_mask
     and #%11101111
-    .repeat 40
+    .repeat 38
     nop
     .endrepeat
     stx PPUSCROLL
